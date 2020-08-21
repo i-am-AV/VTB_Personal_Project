@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A6D465633D639A59E6F4F3E6 /* Pods_SN_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA2CCA1AB06104B40F3B4D8 /* Pods_SN_Messenger.framework */; };
+		FD3F55D624EFFD5E006EE107 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F55D524EFFD5D006EE107 /* AuthService.swift */; };
+		FD3F55DD24F0048C006EE107 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F55DC24F0048C006EE107 /* AuthViewController.swift */; };
 		FD76CE9924EFD61A00AFF249 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76CE9824EFD61A00AFF249 /* AppDelegate.swift */; };
-		FD76CE9D24EFD61A00AFF249 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76CE9C24EFD61A00AFF249 /* ViewController.swift */; };
 		FD76CEA224EFD62200AFF249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD76CEA124EFD62200AFF249 /* Assets.xcassets */; };
 		FD76CEA524EFD62200AFF249 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD76CEA324EFD62200AFF249 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,9 +19,10 @@
 		42ABCDB811B94375AD42F039 /* Pods-SN.Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SN.Messenger.release.xcconfig"; path = "Target Support Files/Pods-SN.Messenger/Pods-SN.Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		A03C3D567C6BCDEB1D426CA7 /* Pods-SN.Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SN.Messenger.debug.xcconfig"; path = "Target Support Files/Pods-SN.Messenger/Pods-SN.Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		CAA2CCA1AB06104B40F3B4D8 /* Pods_SN_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SN_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD3F55D524EFFD5D006EE107 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		FD3F55DC24F0048C006EE107 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = SOURCE_ROOT; };
 		FD76CE9524EFD61A00AFF249 /* SN.Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SN.Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD76CE9824EFD61A00AFF249 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FD76CE9C24EFD61A00AFF249 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FD76CEA124EFD62200AFF249 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD76CEA424EFD62200AFF249 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD76CEA624EFD62200AFF249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,8 +54,15 @@
 				A03C3D567C6BCDEB1D426CA7 /* Pods-SN.Messenger.debug.xcconfig */,
 				42ABCDB811B94375AD42F039 /* Pods-SN.Messenger.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FD3F55D724EFFD6D006EE107 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FD3F55D524EFFD5D006EE107 /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		FD76CE8C24EFD61A00AFF249 = {
@@ -77,8 +86,9 @@
 		FD76CE9724EFD61A00AFF249 /* SN.Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				FD3F55DC24F0048C006EE107 /* AuthViewController.swift */,
 				FD76CE9824EFD61A00AFF249 /* AppDelegate.swift */,
-				FD76CE9C24EFD61A00AFF249 /* ViewController.swift */,
+				FD3F55D724EFFD6D006EE107 /* Services */,
 				FD76CEA124EFD62200AFF249 /* Assets.xcassets */,
 				FD76CEA324EFD62200AFF249 /* LaunchScreen.storyboard */,
 				FD76CEA624EFD62200AFF249 /* Info.plist */,
@@ -200,7 +210,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD76CE9D24EFD61A00AFF249 /* ViewController.swift in Sources */,
+				FD3F55D624EFFD5E006EE107 /* AuthService.swift in Sources */,
+				FD3F55DD24F0048C006EE107 /* AuthViewController.swift in Sources */,
 				FD76CE9924EFD61A00AFF249 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
