@@ -14,6 +14,7 @@
 		FD484ACB24F016FD009C4090 /* AuthServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484ACA24F016FD009C4090 /* AuthServiceDelegate.swift */; };
 		FD484ACF24F0197B009C4090 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484ACE24F0197B009C4090 /* NetworkService.swift */; };
 		FD484AD124F01B8E009C4090 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484AD024F01B8E009C4090 /* API.swift */; };
+		FD484AD324F03A18009C4090 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484AD224F03A18009C4090 /* Networking.swift */; };
 		FD76CE9924EFD61A00AFF249 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76CE9824EFD61A00AFF249 /* AppDelegate.swift */; };
 		FD76CEA224EFD62200AFF249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD76CEA124EFD62200AFF249 /* Assets.xcassets */; };
 		FD76CEA524EFD62200AFF249 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD76CEA324EFD62200AFF249 /* LaunchScreen.storyboard */; };
@@ -29,6 +30,7 @@
 		FD484ACA24F016FD009C4090 /* AuthServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceDelegate.swift; sourceTree = "<group>"; };
 		FD484ACE24F0197B009C4090 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FD484AD024F01B8E009C4090 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		FD484AD224F03A18009C4090 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		FD76CE9524EFD61A00AFF249 /* SN.Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SN.Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD76CE9824EFD61A00AFF249 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD76CEA124EFD62200AFF249 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,8 +96,9 @@
 		FD484ACD24F01964009C4090 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				FD484ACE24F0197B009C4090 /* NetworkService.swift */,
 				FD484AD024F01B8E009C4090 /* API.swift */,
+				FD484ACE24F0197B009C4090 /* NetworkService.swift */,
+				FD484AD224F03A18009C4090 /* Networking.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				FD3F55D624EFFD5E006EE107 /* AuthService.swift in Sources */,
 				FD484AC824F013B6009C4090 /* VKMessagesViewController.swift in Sources */,
 				FD3F55DD24F0048C006EE107 /* AuthViewController.swift in Sources */,
+				FD484AD324F03A18009C4090 /* Networking.swift in Sources */,
 				FD484ACB24F016FD009C4090 /* AuthServiceDelegate.swift in Sources */,
 				FD484ACF24F0197B009C4090 /* NetworkService.swift in Sources */,
 				FD76CE9924EFD61A00AFF249 /* AppDelegate.swift in Sources */,

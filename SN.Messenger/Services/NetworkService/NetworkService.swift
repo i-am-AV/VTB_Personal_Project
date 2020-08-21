@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class NetworkService {
+final class NetworkService: Networking {
     
     // MARK: - Properties
     
@@ -20,42 +20,53 @@ final class NetworkService {
         self.authService = authService
     }
     
-    // MARK: - Public methods
+    // MARK: - Networking implementation
     
-    /**
-    Публичный метод для получения сообщений
-    */
-    
-    func getMessages() {
-        var components = URLComponents()
+    func request(path: String, params: [String : String], completion: @escaping (Data?, Error?) -> Void) {
+
+        let allParams = getAllParams(with: params)
+        let url = self.url(from: path, params: allParams)
         
-        guard let allParams = getParams() else { return }
-        
-        components.scheme = API.scheme
-        components.host = API.host
-        components.path = API.pathToMessages
-        components.queryItems = allParams.map { URLQueryItem(name: $0, value: $1) } // Параметры
-        
-        let url = components.url
-        print(url)
+        let request = URLRequest(url: url)
+        let task = createDataTask(from: request, completion: completion)
+        task.resume() // для запуска
     }
     
     // MARK: - Private methods
     
-    /**
-     Приватный метод для получения параметров
-     - returns: Опциональный словарь со строками в качестве ключей и значений
-     */
-    
-    private func getParams() -> [String: String]? {
+    private func getAllParams(with params: [String : String]) -> [String: String] {
+        guard let token = authService.token else { return [:]}
         
-        guard let token = authService.token else { return nil }
-        
-        let params = ["filter": "all"]
         var allParams = params
         allParams["access_token"] = token
         allParams["v"] = API.version
         
         return allParams
+    }
+    
+    private func createDataTask(from request: URLRequest, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask {
+        return URLSession.shared.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
+                completion(data, error)
+            }
+        }
+    }
+    
+    /**
+    Приватный метод для получения url из метода и параметров запроса
+    - parameter path: Путь метода
+    - parameter params: Словарь параметров запроса
+    */
+    
+    private func url(from path: String, params: [String: String]) -> URL {
+        var components = URLComponents()
+        
+        components.scheme = API.scheme
+        components.host = API.host
+        components.path = API.pathToMessages
+        components.queryItems = params.map { URLQueryItem(name: $0, value: $1) } // Параметры
+        
+        return components.url!
+        
     }
 }
