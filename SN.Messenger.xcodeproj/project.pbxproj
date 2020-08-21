@@ -15,6 +15,9 @@
 		FD484ACF24F0197B009C4090 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484ACE24F0197B009C4090 /* NetworkService.swift */; };
 		FD484AD124F01B8E009C4090 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484AD024F01B8E009C4090 /* API.swift */; };
 		FD484AD324F03A18009C4090 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484AD224F03A18009C4090 /* Networking.swift */; };
+		FD484AD624F04D45009C4090 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484AD524F04D45009C4090 /* MessageResponse.swift */; };
+		FD484AD824F06FD0009C4090 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484AD724F06FD0009C4090 /* Conversation.swift */; };
+		FD484ADA24F07011009C4090 /* LastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484AD924F07011009C4090 /* LastMessage.swift */; };
 		FD76CE9924EFD61A00AFF249 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76CE9824EFD61A00AFF249 /* AppDelegate.swift */; };
 		FD76CEA224EFD62200AFF249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD76CEA124EFD62200AFF249 /* Assets.xcassets */; };
 		FD76CEA524EFD62200AFF249 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD76CEA324EFD62200AFF249 /* LaunchScreen.storyboard */; };
@@ -31,6 +34,9 @@
 		FD484ACE24F0197B009C4090 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FD484AD024F01B8E009C4090 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FD484AD224F03A18009C4090 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		FD484AD524F04D45009C4090 /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
+		FD484AD724F06FD0009C4090 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		FD484AD924F07011009C4090 /* LastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessage.swift; sourceTree = "<group>"; };
 		FD76CE9524EFD61A00AFF249 /* SN.Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SN.Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD76CE9824EFD61A00AFF249 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD76CEA124EFD62200AFF249 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +76,7 @@
 		FD3F55D724EFFD6D006EE107 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FD484AD424F04C1F009C4090 /* Model */,
 				FD484ACD24F01964009C4090 /* NetworkService */,
 				FD484ACC24F01909009C4090 /* AuthService */,
 			);
@@ -101,6 +108,16 @@
 				FD484AD224F03A18009C4090 /* Networking.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		FD484AD424F04C1F009C4090 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FD484AD524F04D45009C4090 /* MessageResponse.swift */,
+				FD484AD724F06FD0009C4090 /* Conversation.swift */,
+				FD484AD924F07011009C4090 /* LastMessage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FD76CE8C24EFD61A00AFF249 = {
@@ -253,10 +270,13 @@
 				FD484AC824F013B6009C4090 /* VKMessagesViewController.swift in Sources */,
 				FD3F55DD24F0048C006EE107 /* AuthViewController.swift in Sources */,
 				FD484AD324F03A18009C4090 /* Networking.swift in Sources */,
+				FD484AD624F04D45009C4090 /* MessageResponse.swift in Sources */,
 				FD484ACB24F016FD009C4090 /* AuthServiceDelegate.swift in Sources */,
 				FD484ACF24F0197B009C4090 /* NetworkService.swift in Sources */,
 				FD76CE9924EFD61A00AFF249 /* AppDelegate.swift in Sources */,
+				FD484AD824F06FD0009C4090 /* Conversation.swift in Sources */,
 				FD484AD124F01B8E009C4090 /* API.swift in Sources */,
+				FD484ADA24F07011009C4090 /* LastMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

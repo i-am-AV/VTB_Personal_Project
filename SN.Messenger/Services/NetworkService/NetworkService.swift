@@ -26,6 +26,7 @@ final class NetworkService: Networking {
 
         let allParams = getAllParams(with: params)
         let url = self.url(from: path, params: allParams)
+        print(url)
         
         let request = URLRequest(url: url)
         let task = createDataTask(from: request, completion: completion)

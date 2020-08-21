@@ -23,9 +23,15 @@ final class VKMessagesViewController: UIViewController {
                 print("Error recieved requesting data: \(error.localizedDescription)")
             }
             
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
             guard let data = data else { return }
-            let json = try? JSONSerialization.jsonObject(with: data, options: [])
-            print("json: \(json)")
+            let response = try? decoder.decode(MessageResponseWrapped.self, from: data)
+            print(response)
+            response?.response.items.map({ messageItem in
+                print(messageItem.conversation)
+            })
         }
     }
 }
