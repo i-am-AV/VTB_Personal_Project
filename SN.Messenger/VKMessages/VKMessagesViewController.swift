@@ -9,29 +9,21 @@
 import UIKit
 
 final class VKMessagesViewController: UIViewController {
+
+    // MARK: - Properties
     
-    private let networkService: Networking = NetworkService()
+    private let fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
     
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemYellow
-        let params = ["filter" : "all"]
-        networkService.request(path: API.pathToMessages, params: params) { (data, error) in
-            if let error = error {
-                print("Error recieved requesting data: \(error.localizedDescription)")
+        fetcher.getMessage { messageResponse in
+            guard let messageResponse = messageResponse else { return }
+            messageResponse.items.map { messageItem in
+                print(messageItem.lastMessage.text)
             }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            guard let data = data else { return }
-            let response = try? decoder.decode(MessageResponseWrapped.self, from: data)
-            print(response)
-            response?.response.items.map({ messageItem in
-                print(messageItem.conversation)
-            })
         }
     }
 }
