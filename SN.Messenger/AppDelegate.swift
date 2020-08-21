@@ -54,6 +54,7 @@ extension AppDelegate: AuthServiceDelegate {
     
     func authServiceSignIn() {
         print(#function)
+        window?.rootViewController = UINavigationController(rootViewController: VKMessagesViewController())
     }
     
     func authServiceSignInFailed() {

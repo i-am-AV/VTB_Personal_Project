@@ -9,15 +9,6 @@
 import Foundation
 import VK_ios_sdk
 
-/**
- Интерфейс для делегирования работы сервиса авторизации
- */
-protocol AuthServiceDelegate: class {
-    func authServiceShouldShow(viewController: UIViewController)
-    func authServiceSignIn()
-    func authServiceSignInFailed()
-}
-
 final class AuthService: NSObject { //conforming NSObjectProtocol
     
     // MARK: - Constants
@@ -28,6 +19,7 @@ final class AuthService: NSObject { //conforming NSObjectProtocol
         static let scope = ["messages"]
         static let initialized = "User initialized"
         static let authorized = "User authorized"
+        static let fail = "Authorisation failed"
     }
     
     // MARK: - Properties
@@ -60,7 +52,7 @@ final class AuthService: NSObject { //conforming NSObjectProtocol
      Асинхронный метод для проверки доступности предыдущей сессии
      */
     func wakeUpSession() {
-        VKSdk.wakeUpSession(Constants.scope) { (state, error) in
+        VKSdk.wakeUpSession(Constants.scope) { [weak delegate](state, error) in
             switch state {
                 
             case .initialized:
@@ -68,21 +60,29 @@ final class AuthService: NSObject { //conforming NSObjectProtocol
                 VKSdk.authorize(Constants.scope) // авторизуем пользователя при инициализации
             case .authorized:
                 print(Constants.authorized)
+                delegate?.authServiceSignIn()
             default:
+                delegate?.authServiceSignInFailed()
                 fatalError(String(describing: error?.localizedDescription))
             }
         }
     }
 }
 
-// MARK: - VKSdk Delegates
+    // MARK: - VKSdk Delegates
 
 extension AuthService: VKSdkDelegate, VKSdkUIDelegate {
     
     //Вызывается при успешной авторизации
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         print(#function)
-        delegate?.authServiceSignIn()
+        
+        // Если пользователь успешно авторизован, будет получен токен
+        if (result.token != nil) {
+            delegate?.authServiceSignIn()
+        } else {
+            print(Constants.fail)
+        }
     }
     
     //Вызывается при неудачной авторизации
