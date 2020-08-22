@@ -15,7 +15,6 @@ final class AuthViewController: UIViewController {
     
     private var authService: AuthService!
     
-    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
