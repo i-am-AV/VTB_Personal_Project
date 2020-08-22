@@ -17,8 +17,8 @@ import Foundation
  */
 
 struct Conversation: Decodable  {
-    let peer: Peer
-    let lastMessageId: Int
+    let peer: Peer?
+    let lastMessageId: Int?
     let inRead: Int?
     let outRead: Int?
 }
@@ -31,7 +31,7 @@ struct Conversation: Decodable  {
 */
 
 struct Peer: Decodable {
-    let id: Int
-    let type: String
-    let localId: Int
+    let id: Int?
+    let type: String?
+    let localId: Int?
 }

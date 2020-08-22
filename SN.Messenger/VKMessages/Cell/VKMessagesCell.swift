@@ -14,7 +14,6 @@ protocol CellUITypes {
     var nameLabel: UILabel { get }
     var messageTextLabel: UILabel { get }
     var dateLabel: UILabel { get }
-    
 }
 
 protocol MessageCellViewModel {

@@ -13,24 +13,20 @@ enum VKMessages {
   enum Model {
     struct Request {
       enum RequestType {
-        case some
         case getMessage
       }
     }
     struct Response {
       enum ResponseType {
-        case some
-        case presentMessage
+        case presentMessage(message: MessageResponse)
       }
     }
     struct ViewModel {
       enum ViewModelData {
-        case some
-        case displayMessage
+        case displayMessage(messageViewModel: MessageViewModel)
       }
     }
   }
-  
 }
 
 struct MessageViewModel {

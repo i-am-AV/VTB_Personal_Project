@@ -16,6 +16,7 @@ class VKMessagesInteractor: VKMessagesBusinessLogic {
 
   var presenter: VKMessagesPresentationLogic?
   var service: VKMessagesService?
+  private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
   
   func makeRequest(request: VKMessages.Model.Request.RequestType) {
     if service == nil {
@@ -24,13 +25,13 @@ class VKMessagesInteractor: VKMessagesBusinessLogic {
     
     switch request {
     
-    case .some:
-        print(".some interactor")
-        presenter?.presentData(response: .some)
     case .getMessage:
-        print(".getMessage interactor")
-        presenter?.presentData(response: .presentMessage)
+        fetcher.getMessage { [weak self] (messageResponse) in
+            guard let messageResponse = messageResponse else { return }
+            self?.presenter?.presentData(response: .presentMessage(message: messageResponse))
+        }
     }
+    
   }
   
 }

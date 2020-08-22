@@ -9,7 +9,7 @@
 import Foundation
 
 struct MessageResponseWrapped: Decodable {
-    let response: MessageResponse
+    let response: MessageResponse?
 }
 
 /**
@@ -20,7 +20,7 @@ struct MessageResponseWrapped: Decodable {
  */
 
 struct MessageResponse: Decodable {
-    let count: Int
+    let count: Int?
     let items: [MessageItem]
     let unreadCount: Int?
     let profiles: [Profile]?
@@ -34,8 +34,8 @@ struct MessageResponse: Decodable {
  */
 
 struct MessageItem: Decodable {
-    let conversation: Conversation
-    let lastMessage: LastMessage
+    let conversation: Conversation?
+    let lastMessage: LastMessage?
 }
 
 /**
@@ -49,12 +49,12 @@ struct MessageItem: Decodable {
  */
 
 struct Profile: Decodable {
-    let id: Int
-    let firstName: String
-    let lastName: String
+    let id: Int?
+    let firstName: String?
+    let lastName: String?
     let deactivated: String?
-    let isClosed: Bool
-    let canAccessClosed: Bool
+    let isClosed: Bool?
+    let canAccessClosed: Bool?
 }
 
 /**
@@ -68,10 +68,10 @@ struct Profile: Decodable {
  */
 
 struct Group: Decodable {
-    let id: Int
-    let name: String
-    let screenName: String
-    let photo_50: String
-    let photo_100: String
-    let photo_200: String
+    let id: Int?
+    let name: String?
+    let screenName: String?
+    let photo50: String?
+    let photo100: String?
+    let photo200: String?
 }

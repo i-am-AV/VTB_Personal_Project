@@ -20,11 +20,9 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
         case cellId
     }
     
-    // MARK: - Properties
-    
     var interactor: VKMessagesBusinessLogic?
     var router: (NSObjectProtocol & VKMessagesRoutingLogic)?
-    private var messageViewModel = MessageViewModel(cells: []) // модель данных ячейки
+    private var messageViewModel = MessageViewModel(cells: [])
     private let tableView = UITableView()
     
     // MARK: Setup
@@ -56,6 +54,8 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
         
         setup()
         setupTableView()
+        
+        interactor?.makeRequest(request: .getMessage)
     }
     
     private func setupTableView() {
@@ -80,27 +80,24 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
     
     func displayData(viewModel: VKMessages.Model.ViewModel.ViewModelData) {
         switch viewModel {
-            
-        case .some:
-            print(".some ViewController")
-        case .displayMessage:
-            print(".displayMessage ViewController")
+        case .displayMessage(messageViewModel: let messageViewModel):
+            self.messageViewModel = messageViewModel // записываем данные во ViewModel
+            tableView.reloadData()
         }
     }
 }
 
 extension VKMessagesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        messageViewModel.cells.count
+        return messageViewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId.rawValue, for: indexPath) as? VKMessagesCell
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId.rawValue, for: indexPath) as! VKMessagesCell
         let cellViewModel = messageViewModel.cells[indexPath.row]
-        cell?.set(viewModel: cellViewModel)
+        cell.set(viewModel: cellViewModel)
         
-        return cell ?? UITableViewCell()
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
