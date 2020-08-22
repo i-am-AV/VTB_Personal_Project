@@ -15,11 +15,13 @@ protocol CellUITypes {
     var messageTextLabel: UILabel { get }
     var dateLabel: UILabel { get }
     
-//    func setCustomContentViewConstraints()
-//    func setAvatarImageViewConstraints()
-//    func setNameLabelConstraints()
-//    func setMessageTextLabelConstraints()
-//    func setDateLabelConstraints()
+}
+
+protocol MessageCellViewModel {
+    var avatarUrlString: String { get }
+    var name: String { get }
+    var text: String? { get }
+    var date: String { get }
 }
 
 final class VKMessagesCell: UITableViewCell, CellUITypes {
@@ -75,6 +77,14 @@ final class VKMessagesCell: UITableViewCell, CellUITypes {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func set(viewModel: MessageCellViewModel) {
+//        avatarImageView
+        nameLabel.text = viewModel.name
+        messageTextLabel.text = viewModel.text
+        dateLabel.text = viewModel.date
     }
     
     // MARK: Setup

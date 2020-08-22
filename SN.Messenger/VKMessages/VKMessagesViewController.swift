@@ -24,6 +24,7 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
     
     var interactor: VKMessagesBusinessLogic?
     var router: (NSObjectProtocol & VKMessagesRoutingLogic)?
+    private var messageViewModel = MessageViewModel(cells: []) // модель данных ячейки
     private let tableView = UITableView()
     
     // MARK: Setup
@@ -90,16 +91,14 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
 
 extension VKMessagesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        messageViewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId.rawValue, for: indexPath) as? VKMessagesCell
-        
-        cell?.avatarImageView.backgroundColor = .red
-        cell?.nameLabel.text = "Name Label"
-        cell?.messageTextLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        cell?.dateLabel.text = "Date label"
+
+        let cellViewModel = messageViewModel.cells[indexPath.row]
+        cell?.set(viewModel: cellViewModel)
         
         return cell ?? UITableViewCell()
     }
@@ -112,26 +111,4 @@ extension VKMessagesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
 }
-
-
-//final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
-//
-//    // MARK: - Properties
-//
-//    private let fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
-//
-//    // MARK: - Life cycle
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.backgroundColor = .systemYellow
-//        fetcher.getMessage { messageResponse in
-//            guard let messageResponse = messageResponse else { return }
-//            messageResponse.items.map { messageItem in
-//                print(messageItem.lastMessage.text)
-//            }
-//        }
-//    }
-//}

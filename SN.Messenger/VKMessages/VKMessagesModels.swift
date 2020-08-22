@@ -32,3 +32,14 @@ enum VKMessages {
   }
   
 }
+
+struct MessageViewModel {
+    struct Cell: MessageCellViewModel {
+        var avatarUrlString: String
+        var name: String
+        var text: String?
+        var date: String
+    }
+    
+    let cells: [Cell]
+}
