@@ -24,6 +24,7 @@ extension UIImageView {
     func configurateAvatarImageView() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 15
+        self.contentMode = .scaleAspectFit
     }
 }
 
@@ -74,5 +75,16 @@ extension UIStackView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.alignment = .fill
         self.distribution = .fill
+    }
+}
+
+extension UIButton {
+    func configurateSignInButton() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+//        self.imageView?.image.setim
+        self.setTitle("Sign In", for: .normal)
+        //        self.font = UIFont.systemFont(ofSize: <#T##CGFloat#>,
+        //                                      weight: <#T##UIFont.Weight#>)
+        
     }
 }

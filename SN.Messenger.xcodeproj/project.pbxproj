@@ -190,14 +190,11 @@
 		FD76CE9724EFD61A00AFF249 /* SN.Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				FDED357924F14CB00005CF19 /* Source */,
 				FDED357624F11D870005CF19 /* Helper */,
-				FD76CE9824EFD61A00AFF249 /* AppDelegate.swift */,
 				FD484AC924F014AC009C4090 /* VKMessages */,
 				FDED356424F0F6830005CF19 /* FacebookMessages */,
 				FD3F55D724EFFD6D006EE107 /* Services */,
-				FD76CEA124EFD62200AFF249 /* Assets.xcassets */,
-				FD76CEA324EFD62200AFF249 /* LaunchScreen.storyboard */,
-				FD76CEA624EFD62200AFF249 /* Info.plist */,
 			);
 			path = SN.Messenger;
 			sourceTree = "<group>";
@@ -230,6 +227,17 @@
 				FDED357724F11DBB0005CF19 /* UIView.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		FDED357924F14CB00005CF19 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FD76CE9824EFD61A00AFF249 /* AppDelegate.swift */,
+				FD76CEA124EFD62200AFF249 /* Assets.xcassets */,
+				FD76CEA324EFD62200AFF249 /* LaunchScreen.storyboard */,
+				FD76CEA624EFD62200AFF249 /* Info.plist */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,7 +519,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VY9AS466G;
-				INFOPLIST_FILE = SN.Messenger/Info.plist;
+				INFOPLIST_FILE = SN.Messenger/Source/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -531,7 +539,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VY9AS466G;
-				INFOPLIST_FILE = SN.Messenger/Info.plist;
+				INFOPLIST_FILE = SN.Messenger/Source/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
