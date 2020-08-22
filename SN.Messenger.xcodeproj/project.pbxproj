@@ -36,6 +36,7 @@
 		FDED357124F0F6AE0005CF19 /* FacebookMessagesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDED356A24F0F6AE0005CF19 /* FacebookMessagesInteractor.swift */; };
 		FDED357224F0F6AE0005CF19 /* FacebookMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED356B24F0F6AE0005CF19 /* FacebookMessagesViewController.xib */; };
 		FDED357524F105150005CF19 /* VKMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDED357424F105150005CF19 /* VKMessagesCell.swift */; };
+		FDED357824F11DBB0005CF19 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDED357724F11DBB0005CF19 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		FDED356A24F0F6AE0005CF19 /* FacebookMessagesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookMessagesInteractor.swift; sourceTree = "<group>"; };
 		FDED356B24F0F6AE0005CF19 /* FacebookMessagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookMessagesViewController.xib; sourceTree = "<group>"; };
 		FDED357424F105150005CF19 /* VKMessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKMessagesCell.swift; sourceTree = "<group>"; };
+		FDED357724F11DBB0005CF19 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 		FD76CE9724EFD61A00AFF249 /* SN.Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				FDED357624F11D870005CF19 /* Helper */,
 				FD76CE9824EFD61A00AFF249 /* AppDelegate.swift */,
 				FD484AC924F014AC009C4090 /* VKMessages */,
 				FDED356424F0F6830005CF19 /* FacebookMessages */,
@@ -219,6 +222,14 @@
 				FDED357424F105150005CF19 /* VKMessagesCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		FDED357624F11D870005CF19 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FDED357724F11DBB0005CF19 /* UIView.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDED357824F11DBB0005CF19 /* UIView.swift in Sources */,
 				FD484ADF24F08AF4009C4090 /* DataFetcher.swift in Sources */,
 				FD484ADC24F085C6009C4090 /* NetworkDataFetcher.swift in Sources */,
 				FDED357024F0F6AE0005CF19 /* FacebookMessagesViewController.swift in Sources */,

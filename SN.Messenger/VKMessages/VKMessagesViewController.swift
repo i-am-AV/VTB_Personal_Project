@@ -62,7 +62,7 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.cellId.rawValue)
+        tableView.register(VKMessagesCell.self, forCellReuseIdentifier: Constants.cellId.rawValue)
         
         setTableViewConstraints()
     }
@@ -86,7 +86,6 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
             print(".displayMessage ViewController")
         }
     }
-    
 }
 
 extension VKMessagesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -95,16 +94,23 @@ extension VKMessagesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId.rawValue, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId.rawValue, for: indexPath) as? VKMessagesCell
         
-        cell.textLabel?.text = "Index: \(indexPath.row)"
+        cell?.avatarImageView.backgroundColor = .red
+        cell?.nameLabel.text = "Name Label"
+        cell?.messageTextLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        cell?.dateLabel.text = "Date label"
         
-        return cell
+        return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(#function)
         interactor?.makeRequest(request: .getMessage)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
 }
