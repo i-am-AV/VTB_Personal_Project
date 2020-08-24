@@ -9,16 +9,26 @@
 import UIKit
 
 final class WebImageView: UIImageView {
+    
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let cache = "Loaded from cache"
+        static let internet = "Loaded from internet"
+    }
+    
+    // MARK: - Public Methods
+    
     func set(imageURL: String) {
         guard let url = URL(string: imageURL) else { return }
         
         if let cacheResponse = URLCache.shared.cachedResponse(for: URLRequest(url: url)) {
             self.image = UIImage(data: cacheResponse.data)
-            print("Loaded from cache")
+            print(Constants.cache)
             return
         }
         
-        print("Loaded from internet")
+        print(Constants.internet)
         
         let dataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             DispatchQueue.main.async {
@@ -31,10 +41,12 @@ final class WebImageView: UIImageView {
         dataTask.resume()
     }
     
+    // MARK: - Private Methods
+    
     /**
         Сохранение изображения в кеш
-     - parameter data:
-     - parameter response:
+     - parameter data: Принимает данные в формате Data
+     - parameter response: Принимает запрос в формате URLResponse
      
      */
     private func handleLoadedImage(data: Data, response: URLResponse) {

@@ -53,20 +53,6 @@ final class VKMessagesCell: UITableViewCell, CellUITypes {
         return label
     }()
     
-    private let verticalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.configurateVerticalStackView()
-        
-        return stackView
-    }()
-    
-    private let horizontalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.configurateHorizontalStackView()
-        
-        return stackView
-    }()
-    
     // MARK: Life cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -99,20 +85,14 @@ final class VKMessagesCell: UITableViewCell, CellUITypes {
         customContentView.addSubview(avatarImageView)
         setAvatarImageViewConstraints()
         
-        customContentView.addSubview(horizontalStackView)
-        setupHorizontalStackView()
-        setHorizontalStackViewConstraints()
-    }
-    
-    private func setupVerticalStackView() {
-        verticalStackView.addArrangedSubview(nameLabel)
-        verticalStackView.addArrangedSubview(messageTextLabel)
-    }
-    
-    private func setupHorizontalStackView() {
-        setupVerticalStackView()
-        horizontalStackView.addArrangedSubview(verticalStackView)
-        horizontalStackView.addArrangedSubview(dateLabel)
+        customContentView.addSubview(dateLabel)
+        setDateLabelConstraints()
+        
+        customContentView.addSubview(messageTextLabel)
+        setMessageTextLabelConstraints()
+        
+        customContentView.addSubview(nameLabel)
+        setNameLabelConstraints()
     }
 }
 
@@ -136,12 +116,30 @@ extension VKMessagesCell {
         ])
     }
     
-    func setHorizontalStackViewConstraints() {
+    func setNameLabelConstraints() {
+        nameLabel.setContentHuggingPriority(.required, for: .vertical)
         NSLayoutConstraint.activate([
-            horizontalStackView.topAnchor.constraint(equalTo: customContentView.topAnchor),
-            horizontalStackView.bottomAnchor.constraint(equalTo: customContentView.bottomAnchor, constant: -8),
-            horizontalStackView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 8),
-            horizontalStackView.trailingAnchor.constraint(equalTo: customContentView.trailingAnchor, constant: -8),
+            nameLabel.topAnchor.constraint(equalTo: customContentView.topAnchor, constant: 8),
+            nameLabel.bottomAnchor.constraint(equalTo: messageTextLabel.topAnchor, constant: -8),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 8),
+            nameLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -8)
+        ])
+    }
+    
+    func setMessageTextLabelConstraints() {
+        NSLayoutConstraint.activate([
+            messageTextLabel.bottomAnchor.constraint(equalTo: customContentView.bottomAnchor, constant: -8),
+            messageTextLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 8),
+            messageTextLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -8)
+        ])
+    }
+
+    func setDateLabelConstraints() {
+        dateLabel.setContentHuggingPriority(.required, for: .horizontal)
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: customContentView.topAnchor, constant: 8),
+            dateLabel.bottomAnchor.constraint(equalTo: customContentView.bottomAnchor, constant: -8),
+            dateLabel.trailingAnchor.constraint(equalTo: customContentView.trailingAnchor, constant: -8),
         ])
     }
 }

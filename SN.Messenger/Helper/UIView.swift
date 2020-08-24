@@ -15,7 +15,8 @@ extension UIView {
         self.layer.cornerRadius = 15
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.systemGray.cgColor
-        self.layer.backgroundColor = UIColor.green.cgColor
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.layer.masksToBounds = true
     }
 }
 
@@ -24,6 +25,7 @@ extension UIImageView {
     func configurateAvatarImageView() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 15
+        self.layer.masksToBounds = true
         self.contentMode = .scaleAspectFit
     }
 }
@@ -40,7 +42,7 @@ extension UILabel {
         configurateLabel()
         self.font = UIFont.systemFont(ofSize: 14, weight: .light)
         self.textColor = .systemGray
-        self.numberOfLines = 3
+        self.numberOfLines = 2
     }
     
     func configurateDateLabel() {
@@ -81,10 +83,6 @@ extension UIStackView {
 extension UIButton {
     func configurateSignInButton() {
         self.translatesAutoresizingMaskIntoConstraints = false
-//        self.imageView?.image.setim
-        self.setTitle("Sign In", for: .normal)
-        //        self.font = UIFont.systemFont(ofSize: <#T##CGFloat#>,
-        //                                      weight: <#T##UIFont.Weight#>)
-        
+        self.setTitle("Войти в ВК", for: .normal)
     }
 }
