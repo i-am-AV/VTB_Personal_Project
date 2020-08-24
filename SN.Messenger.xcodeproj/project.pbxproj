@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A6D465633D639A59E6F4F3E6 /* Pods_SN_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA2CCA1AB06104B40F3B4D8 /* Pods_SN_Messenger.framework */; };
+		FD2D6E0824F3C4D700AE37A2 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D6E0724F3C4D700AE37A2 /* WebImageView.swift */; };
 		FD3F55D624EFFD5E006EE107 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F55D524EFFD5D006EE107 /* AuthService.swift */; };
 		FD3F55DD24F0048C006EE107 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F55DC24F0048C006EE107 /* AuthViewController.swift */; };
 		FD484AC824F013B6009C4090 /* VKMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484AC724F013B6009C4090 /* VKMessagesViewController.swift */; };
@@ -43,6 +44,7 @@
 		42ABCDB811B94375AD42F039 /* Pods-SN.Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SN.Messenger.release.xcconfig"; path = "Target Support Files/Pods-SN.Messenger/Pods-SN.Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		A03C3D567C6BCDEB1D426CA7 /* Pods-SN.Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SN.Messenger.debug.xcconfig"; path = "Target Support Files/Pods-SN.Messenger/Pods-SN.Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		CAA2CCA1AB06104B40F3B4D8 /* Pods_SN_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SN_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD2D6E0724F3C4D700AE37A2 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		FD3F55D524EFFD5D006EE107 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		FD3F55DC24F0048C006EE107 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthViewController.swift; path = SN.Messenger/Services/AuthService/AuthViewController.swift; sourceTree = SOURCE_ROOT; };
 		FD484AC724F013B6009C4090 /* VKMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKMessagesViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				FDED357724F11DBB0005CF19 /* UIView.swift */,
+				FD2D6E0724F3C4D700AE37A2 /* WebImageView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				FDED356124F0F6660005CF19 /* VKMessagesModels.swift in Sources */,
 				FD3F55D624EFFD5E006EE107 /* AuthService.swift in Sources */,
 				FDED357524F105150005CF19 /* VKMessagesCell.swift in Sources */,
+				FD2D6E0824F3C4D700AE37A2 /* WebImageView.swift in Sources */,
 				FDED355E24F0F6660005CF19 /* VKMessagesPresenter.swift in Sources */,
 				FD484AC824F013B6009C4090 /* VKMessagesViewController.swift in Sources */,
 				FDED355F24F0F6660005CF19 /* VKMessagesWorker.swift in Sources */,

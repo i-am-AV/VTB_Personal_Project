@@ -10,7 +10,7 @@ import UIKit
 
 protocol CellUITypes {
     var customContentView: UIView { get }
-    var avatarImageView: UIImageView { get }
+    var avatarImageView: WebImageView { get }
     var nameLabel: UILabel { get }
     var messageTextLabel: UILabel { get }
     var dateLabel: UILabel { get }
@@ -32,8 +32,8 @@ final class VKMessagesCell: UITableViewCell, CellUITypes {
         view.configurateCustomContentView()
         return view
     }()
-    let avatarImageView: UIImageView = {
-        let imageView = UIImageView()
+    let avatarImageView: WebImageView = {
+        let imageView = WebImageView()
         imageView.configurateAvatarImageView()
         return imageView
     }()
@@ -80,7 +80,7 @@ final class VKMessagesCell: UITableViewCell, CellUITypes {
     
     
     func set(viewModel: MessageCellViewModel) {
-//        avatarImageView
+        avatarImageView.set(imageURL: viewModel.avatarUrlString)
         nameLabel.text = viewModel.name
         messageTextLabel.text = viewModel.text
         dateLabel.text = viewModel.date
