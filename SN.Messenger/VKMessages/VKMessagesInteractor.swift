@@ -27,6 +27,21 @@ class VKMessagesInteractor: VKMessagesBusinessLogic {
     
     case .getMessage:
         fetcher.getMessage { [weak self] (messageResponse) in
+            
+            messageResponse?.groups.map({ (group) in
+                print("\(group)\n\n")
+            })
+            
+            messageResponse?.profiles.map({ (profile) in
+                print("\(profile)\n\n")
+            })
+            
+            messageResponse?.items.map({ (messageItem)  in
+                print(messageItem)
+            })
+            
+            
+            
             guard let messageResponse = messageResponse else { return }
             self?.presenter?.presentData(response: .presentMessage(message: messageResponse))
         }

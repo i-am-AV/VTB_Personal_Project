@@ -20,7 +20,7 @@ struct MessageResponseWrapped: Decodable {
  */
 
 struct MessageResponse: Decodable {
-    let count: Int?
+    //let count: Int?
     let items: [MessageItem]
     let unreadCount: Int?
     let profiles: [Profile]?
@@ -46,15 +46,24 @@ struct MessageItem: Decodable {
  - deactivated: Поле возвращается, если страница пользователя удалена или заблокирована, содержит значение deleted или banned. В этом случае опциональные поля не возвращаются
  - isClosed: Скрыт ли профиль пользователя настройками приватности
  - canAccessClosed: может ли текущий пользователь видеть профиль при is_closed = 1
+ - photo100: URL квадратной фотографии пользователя, имеющей ширину 100 пикселей. В случае отсутствия у пользователя фотографии возвращается https://vk.com/images/camera_100.png.
  */
 
-struct Profile: Decodable {
-    let id: Int?
-    let firstName: String?
-    let lastName: String?
-    let deactivated: String?
-    let isClosed: Bool?
-    let canAccessClosed: Bool?
+protocol Representable {
+    var id: Int { get }
+    var name: String { get }
+    var photo: String { get }
+}
+
+struct Profile: Decodable, Representable {
+    let id: Int
+    let firstName: String
+    let lastName: String
+    let photo100: String?
+    
+    var name: String { return firstName + " " + lastName }
+    
+    var photo: String { return photo100 ?? "https://vk.com/images/camera_100.png" }
 }
 
 /**
@@ -67,11 +76,11 @@ struct Profile: Decodable {
  - photo_200: URL главной фотографии в максимальном размере
  */
 
-struct Group: Decodable {
-    let id: Int?
-    let name: String?
-    let screenName: String?
-    let photo50: String?
+struct Group: Decodable, Representable {
+    let id: Int
+    let name: String
+    //let screenName: String
     let photo100: String?
-    let photo200: String?
+    
+    var photo: String { return photo100 ?? "https://vk.com/images/camera_100.png" }
 }

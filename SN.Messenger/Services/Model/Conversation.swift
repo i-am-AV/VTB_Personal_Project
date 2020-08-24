@@ -19,8 +19,9 @@ import Foundation
 struct Conversation: Decodable  {
     let peer: Peer?
     let lastMessageId: Int?
-    let inRead: Int?
-    let outRead: Int?
+//    let inRead: Int?
+//    let outRead: Int?
+    let chatSettings: ChatSettings?
 }
 
 /**
@@ -34,4 +35,11 @@ struct Peer: Decodable {
     let id: Int?
     let type: String?
     let localId: Int?
+}
+
+struct ChatSettings: Decodable {
+    let title: String?
+    let photo50: String?
+    let photo100: String?
+    let photo200: String?
 }

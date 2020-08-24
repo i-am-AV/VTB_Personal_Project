@@ -27,7 +27,10 @@ final class NetworkDataFetcher: DataFetcher {
     // MARK: - Public Methods
     
     func getMessage(response: @escaping (MessageResponse?) -> ()) {
-        let params = ["filter" : "all"]
+        let params = ["filter" : "all",
+                      "count" : "200",
+                      "extended" : "1",
+                      "fields" : "first_name, last_name, photo_100"]
         networking.request(path: API.pathToMessages, params: params) { (data, error) in
             if let error = error {
                 print("Error recieved requesting data: \(error.localizedDescription)")

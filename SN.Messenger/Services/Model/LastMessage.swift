@@ -22,10 +22,10 @@ struct LastMessage: Decodable  {
     let id: Int?
     let date: Int?
     let peerId: Int?
-    let fromId: Int?
+//    let fromId: Int?
     let text: String?
-    let randomId: Int?
-  //  let action: Action?
+//    let randomId: Int?
+    let action: Action?
 }
 
 /**
@@ -34,6 +34,7 @@ struct LastMessage: Decodable  {
  */
 
 struct Action: Decodable {
+    let text: String?
     let photo: Photo?
 }
 
@@ -45,7 +46,7 @@ struct Action: Decodable {
  */
 
 struct Photo: Decodable {
-    let photo50: String?
+//    let photo50: String?
     let photo100: String?
-    let photo200: String?
+//    let photo200: String?
 }
