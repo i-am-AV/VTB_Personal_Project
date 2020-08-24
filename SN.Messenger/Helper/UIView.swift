@@ -8,6 +8,36 @@
 
 import UIKit
 
+    //MARK: - AuthViewController
+
+
+    //MARK: - Label
+
+extension UILabel {
+    
+    func configurateHeaderLabel() {
+        self.text = ""
+    }
+    
+    func configurateAboutLabel() {
+        
+    }
+    
+    
+}
+
+    //MARK: - Button
+extension UIButton {
+    func configurateSignInButton() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.setTitle("Войти в ВК", for: .normal)
+        self.layer.cornerRadius = 15
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.white.cgColor
+    }
+}
+    //MARK: - VKMessagesCell
+
 extension UIView {
     
     func configurateCustomContentView() {
@@ -80,9 +110,3 @@ extension UIStackView {
     }
 }
 
-extension UIButton {
-    func configurateSignInButton() {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.setTitle("Войти в ВК", for: .normal)
-    }
-}
