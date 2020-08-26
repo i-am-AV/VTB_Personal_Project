@@ -16,14 +16,22 @@ import UIKit
 extension UILabel {
     
     func configurateHeaderLabel() {
-        self.text = ""
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.text = "Добро пожаловать в SN.Messenger"
+        self.textColor = .white
+        self.font = UIFont.systemFont(ofSize: 30, weight: .medium)
+        self.textAlignment = .center
+        self.numberOfLines = 2
     }
     
     func configurateAboutLabel() {
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.text = "Это приложение позволяет просматривать список бесед из разных соц.сетей"
+        self.textColor = .lightText
+        self.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        self.textAlignment = .center
+        self.numberOfLines = 3
     }
-    
-    
 }
 
     //MARK: - Button
@@ -31,6 +39,7 @@ extension UIButton {
     func configurateSignInButton() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.setTitle("Войти в ВК", for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         self.layer.cornerRadius = 15
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.white.cgColor
@@ -42,11 +51,11 @@ extension UIView {
     
     func configurateCustomContentView() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.layer.cornerRadius = 15
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.systemGray.cgColor
-        self.layer.backgroundColor = UIColor.white.cgColor
-        self.layer.masksToBounds = true
+        //self.layer.cornerRadius = 46
+//        self.layer.borderWidth = 1
+//        self.layer.borderColor = UIColor.systemGray.cgColor
+//        self.layer.backgroundColor = UIColor.white.cgColor
+//        self.layer.masksToBounds = true
     }
 }
 
@@ -54,7 +63,7 @@ extension UIImageView {
     
     func configurateAvatarImageView() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 46
         self.layer.masksToBounds = true
         self.contentMode = .scaleAspectFit
     }

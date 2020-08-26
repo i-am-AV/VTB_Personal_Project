@@ -100,8 +100,8 @@ extension VKMessagesCell {
     
     func setCustomContentViewConstraints() {
         NSLayoutConstraint.activate([
-            customContentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            customContentView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            customContentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
+            customContentView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
             customContentView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
             customContentView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
         ])
@@ -112,7 +112,7 @@ extension VKMessagesCell {
             avatarImageView.topAnchor.constraint(equalTo: customContentView.topAnchor),
             avatarImageView.bottomAnchor.constraint(equalTo: customContentView.bottomAnchor),
             avatarImageView.leadingAnchor.constraint(equalTo: customContentView.leadingAnchor),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 84)
+            avatarImageView.widthAnchor.constraint(equalToConstant: 92)
         ])
     }
     

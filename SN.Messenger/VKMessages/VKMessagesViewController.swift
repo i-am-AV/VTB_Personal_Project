@@ -16,14 +16,25 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
     
     // MARK: - Constants
     
-    private enum Constants: String {
-        case cellId
+    private enum Constants {
+        static let cellId = "messagesCellId"
+        static let title = "VK chat"
+        static let topInset: CGFloat = 8
+        static let cellHeight: CGFloat = 100
     }
+    
+    // MARK: - Properties
     
     var interactor: VKMessagesBusinessLogic?
     var router: (NSObjectProtocol & VKMessagesRoutingLogic)?
     private var messageViewModel = MessageViewModel(cells: [])
     private let tableView = UITableView()
+    private var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshMesseges), for: .valueChanged)
+        
+        return refreshControl
+    }()
     
     // MARK: Setup
     
@@ -52,6 +63,8 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = Constants.title
+        
         setup()
         setupTableView()
         
@@ -63,9 +76,18 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(VKMessagesCell.self, forCellReuseIdentifier: Constants.cellId.rawValue)
+        tableView.contentInset.top = Constants.topInset
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
+        tableView.addSubview(refreshControl)
+        
+        tableView.register(VKMessagesCell.self, forCellReuseIdentifier: Constants.cellId)
         
         setTableViewConstraints()
+    }
+    
+    @objc private func refreshMesseges() {
+        interactor?.makeRequest(request: .getMessage)
     }
     
     private func setTableViewConstraints() {
@@ -83,6 +105,7 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
         case .displayMessage(messageViewModel: let messageViewModel):
             self.messageViewModel = messageViewModel // записываем данные во ViewModel
             tableView.reloadData()
+            refreshControl.endRefreshing()
         }
     }
 }
@@ -93,7 +116,7 @@ extension VKMessagesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId.rawValue, for: indexPath) as! VKMessagesCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId, for: indexPath) as! VKMessagesCell
         let cellViewModel = messageViewModel.cells[indexPath.row]
         cell.set(viewModel: cellViewModel)
         
@@ -102,10 +125,11 @@ extension VKMessagesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(#function)
+        tableView.deselectRow(at: indexPath, animated: true)
         interactor?.makeRequest(request: .getMessage)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return Constants.cellHeight
     }
 }
