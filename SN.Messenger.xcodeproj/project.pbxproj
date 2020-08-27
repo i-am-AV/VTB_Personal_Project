@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A6D465633D639A59E6F4F3E6 /* Pods_SN_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA2CCA1AB06104B40F3B4D8 /* Pods_SN_Messenger.framework */; };
 		FD2D6E0824F3C4D700AE37A2 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D6E0724F3C4D700AE37A2 /* WebImageView.swift */; };
+		FD2D6E0E24F6E4AD00AE37A2 /* CellProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D6E0D24F6E4AD00AE37A2 /* CellProtocols.swift */; };
 		FD3F55D624EFFD5E006EE107 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F55D524EFFD5D006EE107 /* AuthService.swift */; };
 		FD3F55DD24F0048C006EE107 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F55DC24F0048C006EE107 /* AuthViewController.swift */; };
 		FD484AC824F013B6009C4090 /* VKMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD484AC724F013B6009C4090 /* VKMessagesViewController.swift */; };
@@ -37,7 +38,6 @@
 		FDED357124F0F6AE0005CF19 /* FacebookMessagesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDED356A24F0F6AE0005CF19 /* FacebookMessagesInteractor.swift */; };
 		FDED357224F0F6AE0005CF19 /* FacebookMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED356B24F0F6AE0005CF19 /* FacebookMessagesViewController.xib */; };
 		FDED357524F105150005CF19 /* VKMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDED357424F105150005CF19 /* VKMessagesCell.swift */; };
-		FDED357824F11DBB0005CF19 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDED357724F11DBB0005CF19 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +45,7 @@
 		A03C3D567C6BCDEB1D426CA7 /* Pods-SN.Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SN.Messenger.debug.xcconfig"; path = "Target Support Files/Pods-SN.Messenger/Pods-SN.Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		CAA2CCA1AB06104B40F3B4D8 /* Pods_SN_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SN_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2D6E0724F3C4D700AE37A2 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
+		FD2D6E0D24F6E4AD00AE37A2 /* CellProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocols.swift; sourceTree = "<group>"; };
 		FD3F55D524EFFD5D006EE107 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		FD3F55DC24F0048C006EE107 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthViewController.swift; path = SN.Messenger/Services/AuthService/AuthViewController.swift; sourceTree = SOURCE_ROOT; };
 		FD484AC724F013B6009C4090 /* VKMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKMessagesViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		FDED356A24F0F6AE0005CF19 /* FacebookMessagesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookMessagesInteractor.swift; sourceTree = "<group>"; };
 		FDED356B24F0F6AE0005CF19 /* FacebookMessagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookMessagesViewController.xib; sourceTree = "<group>"; };
 		FDED357424F105150005CF19 /* VKMessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKMessagesCell.swift; sourceTree = "<group>"; };
-		FDED357724F11DBB0005CF19 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				FDED357424F105150005CF19 /* VKMessagesCell.swift */,
+				FD2D6E0D24F6E4AD00AE37A2 /* CellProtocols.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -226,7 +227,6 @@
 		FDED357624F11D870005CF19 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				FDED357724F11DBB0005CF19 /* UIView.swift */,
 				FD2D6E0724F3C4D700AE37A2 /* WebImageView.swift */,
 			);
 			path = Helper;
@@ -358,7 +358,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDED357824F11DBB0005CF19 /* UIView.swift in Sources */,
 				FD484ADF24F08AF4009C4090 /* DataFetcher.swift in Sources */,
 				FD484ADC24F085C6009C4090 /* NetworkDataFetcher.swift in Sources */,
 				FDED357024F0F6AE0005CF19 /* FacebookMessagesViewController.swift in Sources */,
@@ -377,6 +376,7 @@
 				FDED356F24F0F6AE0005CF19 /* FacebookMessagesModels.swift in Sources */,
 				FD484AD624F04D45009C4090 /* MessageResponse.swift in Sources */,
 				FD484ACB24F016FD009C4090 /* AuthServiceDelegate.swift in Sources */,
+				FD2D6E0E24F6E4AD00AE37A2 /* CellProtocols.swift in Sources */,
 				FDED356224F0F6660005CF19 /* VKMessagesInteractor.swift in Sources */,
 				FD484ACF24F0197B009C4090 /* NetworkService.swift in Sources */,
 				FDED356024F0F6660005CF19 /* VKMessagesRouter.swift in Sources */,

@@ -13,6 +13,9 @@ protocol VKMessagesPresentationLogic {
 }
 
 class VKMessagesPresenter: VKMessagesPresentationLogic {
+    
+    // MARK: - Properties
+    
   weak var viewController: VKMessagesDisplayLogic?
     private let dateFormatter: DateFormatter = {
         var dateFormatter = DateFormatter()
@@ -21,6 +24,8 @@ class VKMessagesPresenter: VKMessagesPresentationLogic {
         
         return dateFormatter
     }()
+    
+    // MARK: - Public Methods
   
   func presentData(response: VKMessages.Model.Response.ResponseType) {
     switch response {
@@ -28,17 +33,17 @@ class VKMessagesPresenter: VKMessagesPresentationLogic {
     case .presentMessage(let message):
         //форматируем данные для передачи во viewController
         let cells = message.items.map { (messageItem) in
-            cellViewModel(from: messageItem, profiles: message.profiles ?? [], and: message.groups ?? [])
+            cellViewModel(from: messageItem, profiles: message.profiles ?? [])
         }
         let messageViewModel = MessageViewModel(cells: cells)
         viewController?.displayData(viewModel: .displayMessage(messageViewModel: messageViewModel))
     }
   }
+    
+    // MARK: - Private Methods
   
-    private func cellViewModel(from messageItem: MessageItem, profiles: [Profile], and groups: [Group]) -> MessageViewModel.Cell {
+    private func cellViewModel(from messageItem: MessageItem, profiles: [Profile]) -> MessageViewModel.Cell {
         
-//        let profile = self.profile(for: (messageItem.conversation?.peer?.id)!, of: (messageItem.conversation?.peer?.type)!,
-//                                   profiles: profiles, groups: groups)
         
         let profile = profiles.first { (profile) -> Bool in
             return profile.id == messageItem.conversation?.peer?.id
@@ -55,16 +60,4 @@ class VKMessagesPresenter: VKMessagesPresentationLogic {
                                           text: messageItem.lastMessage?.text ?? "Вложение",
                                           date: dateTitle)
     }
-    
-//    private func profile(for peerId: Int, of type: String, profiles: [Profile], groups: [Group]) -> Representable {
-//        let profilesOrGroups: [Representable] = peerId >= 0 ? profiles : groups
-//        print(profilesOrGroups)
-//        let normalLocalId = localId >= 0 ? localId : -localId
-//        print(normalLocalId)
-//        let representable = profilesOrGroups.first { (representable) -> Bool in
-//            representable.id == normalLocalId
-//        }
-//        print(representable)
-//        return representable!
-//    }
 }

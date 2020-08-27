@@ -110,6 +110,8 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
     }
 }
 
+    // MARK: - TableView DataSource & Delegate
+
 extension VKMessagesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageViewModel.cells.count

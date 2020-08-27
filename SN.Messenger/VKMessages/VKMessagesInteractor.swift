@@ -14,10 +14,14 @@ protocol VKMessagesBusinessLogic {
 
 class VKMessagesInteractor: VKMessagesBusinessLogic {
 
+    // MARK: - Properties
+    
   var presenter: VKMessagesPresentationLogic?
   var service: VKMessagesService?
   private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
   
+    // MARK: - Public Methods
+    
   func makeRequest(request: VKMessages.Model.Request.RequestType) {
     if service == nil {
       service = VKMessagesService()
@@ -28,25 +32,9 @@ class VKMessagesInteractor: VKMessagesBusinessLogic {
     case .getMessage:
         fetcher.getMessage { [weak self] (messageResponse) in
             
-//            messageResponse?.groups.map({ (group) in
-//                print("\(group)\n\n")
-//            })
-//            
-//            messageResponse?.profiles.map({ (profile) in
-//                print("\(profile)\n\n")
-//            })
-//            
-//            messageResponse?.items.map({ (messageItem)  in
-//                print(messageItem)
-//            })
-            
-            
-            
             guard let messageResponse = messageResponse else { return }
             self?.presenter?.presentData(response: .presentMessage(message: messageResponse))
         }
     }
-    
   }
-  
 }

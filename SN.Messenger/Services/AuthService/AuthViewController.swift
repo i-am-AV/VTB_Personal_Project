@@ -16,7 +16,12 @@ final class AuthViewController: UIViewController {
     private var authService: AuthService!
     private let signInButton: UIButton = {
         let button = UIButton()
-        button.configurateSignInButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Войти в ВК", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        button.layer.cornerRadius = 15
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
         button.addTarget(self, action: #selector(signInPressed), for: .touchUpInside)
         
         return button
@@ -24,14 +29,22 @@ final class AuthViewController: UIViewController {
     
     private let headerLabel: UILabel = {
         let label = UILabel()
-        label.configurateHeaderLabel()
+        label.text = "Добро пожаловать в SN.Messenger"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 30, weight: .medium)
+        label.textAlignment = .center
+        label.numberOfLines = 2
         
         return label
     }()
     
     private let aboutLabel: UILabel = {
         let label = UILabel()
-        label.configurateAboutLabel()
+        label.text = "Это приложение позволяет просматривать список бесед из разных соц.сетей"
+        label.textColor = .lightText
+        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        label.textAlignment = .center
+        label.numberOfLines = 3
         
         return label
     }()
@@ -53,7 +66,6 @@ final class AuthViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         authService = AppDelegate.shared().authService // получаем authService через AppDelegate, чтобы не создавать его 2 раза (в AppDelegate и здесь)
-//        authService.wakeUpSession()
         setupView()
     }
     

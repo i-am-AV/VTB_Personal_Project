@@ -8,48 +8,50 @@
 
 import UIKit
 
-protocol CellUITypes {
-    var customContentView: UIView { get }
-    var avatarImageView: WebImageView { get }
-    var nameLabel: UILabel { get }
-    var messageTextLabel: UILabel { get }
-    var dateLabel: UILabel { get }
-}
-
-protocol MessageCellViewModel {
-    var avatarUrlString: String { get }
-    var name: String { get }
-    var text: String? { get }
-    var date: String { get }
-}
-
 final class VKMessagesCell: UITableViewCell, CellUITypes {
     
     // MARK: Properties
     
     let customContentView: UIView = {
         let view = UIView()
-        view.configurateCustomContentView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
     let avatarImageView: WebImageView = {
         let imageView = WebImageView()
-        imageView.configurateAvatarImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 46
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.configurateNameLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        label.textColor = .black
+        
         return label
     }()
+    
     let messageTextLabel: UILabel = {
         let label = UILabel()
-        label.configurateMessageTextLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        label.textColor = .systemGray
+        label.numberOfLines = 2
         return label
     }()
+    
     let dateLabel: UILabel = {
         let label = UILabel()
-        label.configurateDateLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        label.textColor = .systemGray
+        label.textAlignment = .right
         return label
     }()
     
@@ -64,6 +66,7 @@ final class VKMessagesCell: UITableViewCell, CellUITypes {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Setter
     
     func set(viewModel: MessageCellViewModel) {
         avatarImageView.set(imageURL: viewModel.avatarUrlString)
@@ -75,6 +78,9 @@ final class VKMessagesCell: UITableViewCell, CellUITypes {
     // MARK: Setup
     
     private func setupCell() {
+        
+        selectionStyle = .blue
+        
         self.addSubview(customContentView)
         setupCustomContentView()
     }
@@ -96,9 +102,11 @@ final class VKMessagesCell: UITableViewCell, CellUITypes {
     }
 }
 
+    // MARK: Constraints
+
 extension VKMessagesCell {
     
-    func setCustomContentViewConstraints() {
+    private func setCustomContentViewConstraints() {
         NSLayoutConstraint.activate([
             customContentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
             customContentView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
@@ -107,7 +115,7 @@ extension VKMessagesCell {
         ])
     }
     
-    func setAvatarImageViewConstraints() {
+    private func setAvatarImageViewConstraints() {
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: customContentView.topAnchor),
             avatarImageView.bottomAnchor.constraint(equalTo: customContentView.bottomAnchor),
@@ -116,7 +124,7 @@ extension VKMessagesCell {
         ])
     }
     
-    func setNameLabelConstraints() {
+    private func setNameLabelConstraints() {
         nameLabel.setContentHuggingPriority(.required, for: .vertical)
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: customContentView.topAnchor, constant: 8),
@@ -126,7 +134,7 @@ extension VKMessagesCell {
         ])
     }
     
-    func setMessageTextLabelConstraints() {
+    private func setMessageTextLabelConstraints() {
         NSLayoutConstraint.activate([
             messageTextLabel.bottomAnchor.constraint(equalTo: customContentView.bottomAnchor, constant: -8),
             messageTextLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 8),
@@ -134,7 +142,7 @@ extension VKMessagesCell {
         ])
     }
 
-    func setDateLabelConstraints() {
+    private func setDateLabelConstraints() {
         dateLabel.setContentHuggingPriority(.required, for: .horizontal)
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: customContentView.topAnchor, constant: 8),
