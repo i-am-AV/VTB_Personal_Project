@@ -50,14 +50,14 @@ class VKMessagesPresenter: VKMessagesPresentationLogic {
         }
         
         let photo = profile?.photo ?? messageItem.conversation?.chatSettings?.photo100
-        
+        let text = messageItem.lastMessage?.text != "" ? messageItem.lastMessage?.text : "Вложение"
 
         let date = Date(timeIntervalSince1970: Double((messageItem.lastMessage?.date)!))
         let dateTitle = dateFormatter.string(from: date)
         
         return MessageViewModel.Cell.init(avatarUrlString: photo ?? "https://vk.com/images/camera_100.png",
                                           name:  messageItem.conversation?.chatSettings?.title ?? profile?.name ?? "NAME",
-                                          text: messageItem.lastMessage?.text ?? "Вложение",
+                                          text: text ?? "Вложение",
                                           date: dateTitle)
     }
 }

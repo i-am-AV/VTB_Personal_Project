@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol VKMessagesDisplayLogic: class {
     func displayData(viewModel: VKMessages.Model.ViewModel.ViewModelData)
@@ -28,6 +29,7 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
     var interactor: VKMessagesBusinessLogic?
     var router: (NSObjectProtocol & VKMessagesRoutingLogic)?
     private var messageViewModel = MessageViewModel(cells: [])
+    private let context = CoreDataStack.shared.persistentContainer.viewContext
     private let tableView = UITableView()
     private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -58,7 +60,7 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
     
     
     
-    // MARK: View lifecycle
+    // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +72,8 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
         
         interactor?.makeRequest(request: .getMessage)
     }
+    
+    // MARK: - TableView
     
     private func setupTableView() {
         view.addSubview(tableView)
@@ -86,10 +90,6 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
         setTableViewConstraints()
     }
     
-    @objc private func refreshMesseges() {
-        interactor?.makeRequest(request: .getMessage)
-    }
-    
     private func setTableViewConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -99,6 +99,14 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
+    
+    // MARK: - RefreshControl
+    
+    @objc private func refreshMesseges() {
+        interactor?.makeRequest(request: .getMessage)
+    }
+    
+    // MARK: - DisplayData
     
     func displayData(viewModel: VKMessages.Model.ViewModel.ViewModelData) {
         switch viewModel {
@@ -112,7 +120,7 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
 
     // MARK: - TableView DataSource & Delegate
 
-extension VKMessagesViewController: UITableViewDataSource, UITableViewDelegate {
+ extension VKMessagesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageViewModel.cells.count
     }

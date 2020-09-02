@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import VK_ios_sdk
+//import VK_ios_sdk
 
 final class AuthViewController: UIViewController {
     
