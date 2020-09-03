@@ -22,6 +22,7 @@ final class AuthViewController: UIViewController {
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.white.cgColor
+        button.alpha = 0.0
         button.addTarget(self, action: #selector(signInPressed), for: .touchUpInside)
         
         return button
@@ -73,6 +74,10 @@ final class AuthViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .systemBlue
         view.addSubview(signInButton)
+        UIView.animate(withDuration: 5.0, animations: {
+        self.signInButton.alpha = 1.0
+        })
+        
         setSignInButtonConstraints()
         
         view.addSubview(stackView)
