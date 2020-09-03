@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import VK_ios_sdk
 
 final class AuthViewController: UIViewController {
     
@@ -71,12 +70,18 @@ final class AuthViewController: UIViewController {
         setupView()
     }
     
-    private func setupView() {
-        view.backgroundColor = .systemBlue
-        view.addSubview(signInButton)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         UIView.animate(withDuration: 5.0, animations: {
         self.signInButton.alpha = 1.0
         })
+    }
+    
+    // MARK: - Setup
+    
+    private func setupView() {
+        view.backgroundColor = .systemBlue
+        view.addSubview(signInButton)
         
         setSignInButtonConstraints()
         
@@ -86,9 +91,13 @@ final class AuthViewController: UIViewController {
         setStackViewConstraints()
     }
     
+    // MARK: - Actions
+    
     @objc private func signInPressed() {
         authService.wakeUpSession()
     }
+    
+    // MARK: - Constraints
     
     private func setSignInButtonConstraints() {
         NSLayoutConstraint.activate([
