@@ -57,7 +57,7 @@ final class AuthService: NSObject { //conforming NSObjectProtocol
     func wakeUpSession() {
         VKSdk.wakeUpSession(Constants.scope) { [weak delegate](state, error) in
             switch state {
-                
+
             case .initialized:
                 print(Constants.initialized)
                 VKSdk.authorize(Constants.scope) // авторизуем пользователя при инициализации
@@ -75,11 +75,11 @@ final class AuthService: NSObject { //conforming NSObjectProtocol
     // MARK: - VKSdk Delegates
 
 extension AuthService: VKSdkDelegate, VKSdkUIDelegate {
-    
+
     //Вызывается при успешной авторизации
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         print(#function)
-        
+
         // Если пользователь успешно авторизован, будет получен токен
         if (result.token != nil) {
             delegate?.authServiceSignIn()
@@ -87,19 +87,19 @@ extension AuthService: VKSdkDelegate, VKSdkUIDelegate {
             print(Constants.fail)
         }
     }
-    
+
     //Вызывается при неудачной авторизации
     func vkSdkUserAuthorizationFailed() {
         print(#function)
         delegate?.authServiceSignInFailed()
     }
-    
+
     //Вызывается для показа контроллер авторизации. Принимает контроллре
     func vkSdkShouldPresent(_ controller: UIViewController!) {
         print(#function)
         delegate?.authServiceShouldShow(viewController: controller)
     }
-    
+
     //Вызывается, если нужно ввести капчу
     func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
         print(#function)

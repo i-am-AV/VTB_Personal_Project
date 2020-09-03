@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A6D465633D639A59E6F4F3E6 /* Pods_SN_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA2CCA1AB06104B40F3B4D8 /* Pods_SN_Messenger.framework */; };
+		FD254DAA250104930049F89C /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD254DA9250104930049F89C /* CoreDataProtocol.swift */; };
 		FD2D6E0824F3C4D700AE37A2 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D6E0724F3C4D700AE37A2 /* WebImageView.swift */; };
 		FD2D6E0E24F6E4AD00AE37A2 /* CellProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D6E0D24F6E4AD00AE37A2 /* CellProtocols.swift */; };
 		FD3F55D624EFFD5E006EE107 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F55D524EFFD5D006EE107 /* AuthService.swift */; };
@@ -41,6 +42,7 @@
 		42ABCDB811B94375AD42F039 /* Pods-SN.Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SN.Messenger.release.xcconfig"; path = "Target Support Files/Pods-SN.Messenger/Pods-SN.Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		A03C3D567C6BCDEB1D426CA7 /* Pods-SN.Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SN.Messenger.debug.xcconfig"; path = "Target Support Files/Pods-SN.Messenger/Pods-SN.Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		CAA2CCA1AB06104B40F3B4D8 /* Pods_SN_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SN_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD254DA9250104930049F89C /* CoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		FD2D6E0724F3C4D700AE37A2 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		FD2D6E0D24F6E4AD00AE37A2 /* CellProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocols.swift; sourceTree = "<group>"; };
 		FD3F55D524EFFD5D006EE107 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				FDB1BC1C24FD57DF0020A02F /* GeneratedClasses */,
 				FDB1BC0B24FD24DD0020A02F /* CoreDataStack.swift */,
+				FD254DA9250104930049F89C /* CoreDataProtocol.swift */,
 				FDB1BC0D24FD25B10020A02F /* SN.Messenger.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -388,6 +391,7 @@
 				FD484AD824F06FD0009C4090 /* Conversation.swift in Sources */,
 				FDB1BC0F24FD25B10020A02F /* SN.Messenger.xcdatamodeld in Sources */,
 				FD484AD124F01B8E009C4090 /* API.swift in Sources */,
+				FD254DAA250104930049F89C /* CoreDataProtocol.swift in Sources */,
 				FD484ADA24F07011009C4090 /* LastMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

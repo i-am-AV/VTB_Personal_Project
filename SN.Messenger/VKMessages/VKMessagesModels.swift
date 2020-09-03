@@ -37,5 +37,5 @@ struct MessageViewModel {
         var date: String
     }
     
-    let cells: [Cell]
+    var cells: [Cell]
 }

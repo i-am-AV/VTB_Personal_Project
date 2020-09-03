@@ -46,17 +46,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - AuthServiceDelegate
 
 extension AppDelegate: AuthServiceDelegate {
-    
+
     func authServiceShouldShow(viewController: UIViewController) {
         print(#function)
         window?.rootViewController?.show(viewController, sender: nil)
     }
-    
+
     func authServiceSignIn() {
         print(#function)
         window?.rootViewController = UINavigationController(rootViewController: VKMessagesViewController())
     }
-    
+
     func authServiceSignInFailed() {
         print(#function)
     }

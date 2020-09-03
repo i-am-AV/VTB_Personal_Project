@@ -65,6 +65,7 @@ final class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
+        
         authService = AppDelegate.shared().authService // получаем authService через AppDelegate, чтобы не создавать его 2 раза (в AppDelegate и здесь)
         setupView()
     }

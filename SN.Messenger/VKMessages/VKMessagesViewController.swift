@@ -73,6 +73,13 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
         interactor?.makeRequest(request: .getMessage)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if messageViewModel.cells.isEmpty {
+            loadViewModel()
+        }
+    }
     // MARK: - TableView
     
     private func setupTableView() {
@@ -112,6 +119,7 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
         switch viewModel {
         case .displayMessage(messageViewModel: let messageViewModel):
             self.messageViewModel = messageViewModel // записываем данные во ViewModel
+            saveMessages(viewModel: messageViewModel)
             tableView.reloadData()
             refreshControl.endRefreshing()
         }
@@ -141,5 +149,50 @@ final class VKMessagesViewController: UIViewController, VKMessagesDisplayLogic {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.cellHeight
+    }
+}
+    
+    // MARK: - CoreData Implementation
+
+extension VKMessagesViewController: CoreDataProtocol {
+    func saveMessages(viewModel: MessageViewModel) {
+        guard let entity = NSEntityDescription.entity(forEntityName: "Message", in: context) else { return }
+        for cell in viewModel.cells {
+            let messageObject = Message(entity: entity, insertInto: context)
+            
+            messageObject.name = cell.name
+            messageObject.text = cell.text
+            messageObject.date = cell.date
+            messageObject.photo = cell.avatarUrlString
+            
+            print("Сохранен объект", messageObject)
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func loadViewModel() {
+        let fetchRequest: NSFetchRequest<Message> = Message.fetchRequest()
+        
+        do {
+            let messages = try context.fetch(fetchRequest)
+            var localViewModel = MessageViewModel(cells: [])
+            for message in messages {
+                if let name = message.name,
+                    let text = message.text,
+                    let date = message.date,
+                    let photo = message.photo {
+                    localViewModel.cells.append(MessageViewModel.Cell(avatarUrlString: photo, name: name, text: text, date: date))
+                }
+            }
+            messageViewModel = localViewModel
+            print("Loaded ViewModel", messageViewModel)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

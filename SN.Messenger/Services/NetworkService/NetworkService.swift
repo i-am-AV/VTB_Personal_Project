@@ -19,7 +19,6 @@ final class NetworkService: Networking {
     init(authService: AuthService = AppDelegate.shared().authService!) {
         self.authService = authService
     }
-    
     // MARK: - Networking implementation
     
     func request(path: String, params: [String : String], completion: @escaping (Data?, Error?) -> Void) {
@@ -41,7 +40,7 @@ final class NetworkService: Networking {
         var allParams = params
         allParams["access_token"] = token
         allParams["v"] = API.version
-        
+
         return allParams
     }
     
